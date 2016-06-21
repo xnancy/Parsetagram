@@ -1,0 +1,18 @@
+PODS:
+  - Bolts/Tasks (1.7.0)
+  - EBPhotoPages (0.9.1)
+  - Parse (1.13.0):
+    - Bolts/Tasks (~> 1.6)
+
+DEPENDENCIES:
+  - EBPhotoPages
+  - Parse
+
+SPEC CHECKSUMS:
+  Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
+  EBPhotoPages: 57ad7f10c6fc92b734954e00cd98e8eea6feae82
+  Parse: f51c24d2feb412e4b2d6cc73d37cb24e8d0089bc
+
+PODFILE CHECKSUM: 156db2d99060ac2a86986844efaa5af41132e9db
+
+COCOAPODS: 1.0.1
