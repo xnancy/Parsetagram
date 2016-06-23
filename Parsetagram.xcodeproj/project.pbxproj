@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		344CECC8F1EB01D7211BA78E /* Pods_ParsetagramTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43DBC6A00895BF26AE3862C4 /* Pods_ParsetagramTests.framework */; };
 		6C59C3675F2AE75386EB0748 /* Pods_ParsetagramUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41BAEA738C2E7D3F03BB8EB6 /* Pods_ParsetagramUITests.framework */; };
+		92343A121D1C6C0D0057416C /* TableCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92343A111D1C6C0D0057416C /* TableCellDelegate.swift */; };
 		9235CD711D18944200279A7A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9235CD701D18944200279A7A /* LoginViewController.swift */; };
 		9235CD731D18B3C400279A7A /* PhotoPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9235CD721D18B3C400279A7A /* PhotoPickerViewController.swift */; };
 		926A4AFD1D188E9D00EF595C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 926A4AFC1D188E9D00EF595C /* AppDelegate.swift */; };
@@ -20,6 +21,8 @@
 		929F17D11D19D9C5004FB13D /* CaptionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F17D01D19D9C5004FB13D /* CaptionPageViewController.swift */; };
 		929F17D41D19E378004FB13D /* PostClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F17D31D19E378004FB13D /* PostClass.swift */; };
 		929F17D91D19EC04004FB13D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 929F17D81D19EC04004FB13D /* HomeViewController.swift */; };
+		92E8F6831D1B388B00D096E5 /* CommentClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E8F6821D1B388B00D096E5 /* CommentClass.swift */; };
+		92E8F6851D1B501500D096E5 /* imageTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92E8F6841D1B501500D096E5 /* imageTableCell.swift */; };
 		978D6417FF036BADC7370F00 /* Pods_Parsetagram.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE58720128035BDE106C3DD5 /* Pods_Parsetagram.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,6 +49,7 @@
 		26D9455F620186D473421D49 /* Pods-ParsetagramTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParsetagramTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ParsetagramTests/Pods-ParsetagramTests.release.xcconfig"; sourceTree = "<group>"; };
 		41BAEA738C2E7D3F03BB8EB6 /* Pods_ParsetagramUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParsetagramUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		43DBC6A00895BF26AE3862C4 /* Pods_ParsetagramTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParsetagramTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92343A111D1C6C0D0057416C /* TableCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableCellDelegate.swift; sourceTree = "<group>"; };
 		9235CD701D18944200279A7A /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9235CD721D18B3C400279A7A /* PhotoPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoPickerViewController.swift; sourceTree = "<group>"; };
 		926A4AF91D188E9D00EF595C /* Parsetagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parsetagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +67,8 @@
 		929F17D01D19D9C5004FB13D /* CaptionPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaptionPageViewController.swift; sourceTree = "<group>"; };
 		929F17D31D19E378004FB13D /* PostClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostClass.swift; sourceTree = "<group>"; };
 		929F17D81D19EC04004FB13D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		92E8F6821D1B388B00D096E5 /* CommentClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentClass.swift; sourceTree = "<group>"; };
+		92E8F6841D1B501500D096E5 /* imageTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = imageTableCell.swift; sourceTree = "<group>"; };
 		CE58720128035BDE106C3DD5 /* Pods_Parsetagram.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Parsetagram.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E83F16B2A79CC32EFECCDF85 /* Pods-Parsetagram.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Parsetagram.release.xcconfig"; path = "Pods/Target Support Files/Pods-Parsetagram/Pods-Parsetagram.release.xcconfig"; sourceTree = "<group>"; };
 		EF3B2DDB1E85E416115B7427 /* Pods-ParsetagramUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ParsetagramUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ParsetagramUITests/Pods-ParsetagramUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +142,8 @@
 				929F17D21D19D9D1004FB13D /* View Controllers */,
 				926A4AFC1D188E9D00EF595C /* AppDelegate.swift */,
 				926A4B001D188E9D00EF595C /* Main.storyboard */,
+				92343A111D1C6C0D0057416C /* TableCellDelegate.swift */,
+				92E8F6841D1B501500D096E5 /* imageTableCell.swift */,
 				926A4B031D188E9D00EF595C /* Assets.xcassets */,
 				926A4B051D188E9D00EF595C /* LaunchScreen.storyboard */,
 				926A4B081D188E9D00EF595C /* Info.plist */,
@@ -176,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				929F17D31D19E378004FB13D /* PostClass.swift */,
+				92E8F6821D1B388B00D096E5 /* CommentClass.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -458,9 +467,12 @@
 			files = (
 				9235CD711D18944200279A7A /* LoginViewController.swift in Sources */,
 				9235CD731D18B3C400279A7A /* PhotoPickerViewController.swift in Sources */,
+				92E8F6851D1B501500D096E5 /* imageTableCell.swift in Sources */,
 				929F17D11D19D9C5004FB13D /* CaptionPageViewController.swift in Sources */,
+				92E8F6831D1B388B00D096E5 /* CommentClass.swift in Sources */,
 				929F17D41D19E378004FB13D /* PostClass.swift in Sources */,
 				926A4AFD1D188E9D00EF595C /* AppDelegate.swift in Sources */,
+				92343A121D1C6C0D0057416C /* TableCellDelegate.swift in Sources */,
 				929F17D91D19EC04004FB13D /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

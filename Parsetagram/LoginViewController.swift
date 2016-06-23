@@ -11,9 +11,11 @@ import Parse
 
 class LoginViewController: UIViewController {
     
+    /* ----------- OUTLETS ----------- */
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    /* ----------- VIEW CONTROLLER ----------- */
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,6 +26,8 @@ class LoginViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    /* ----------- ACTIONS ----------- */
     @IBAction func onSignIn(sender: AnyObject) {
         PFUser.logInWithUsernameInBackground(usernameField.text!, password: passwordField.text!) {
             (user: PFUser?, error: NSError?) -> Void in
@@ -57,14 +61,4 @@ class LoginViewController: UIViewController {
             }
         }
     }
-        /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

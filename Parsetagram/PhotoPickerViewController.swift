@@ -10,8 +10,10 @@ import UIKit
 
 class PhotoPickerViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    /* ----------- VARIABLES ----------- */
     var imageToPost: UIImage?
     
+    /* ----------- VIEW CONTROLLER ----------- */
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -21,7 +23,7 @@ class PhotoPickerViewController: UIViewController, UIImagePickerControllerDelega
         // Dispose of any resources that can be recreated.
     }
     
-    /* ---------- ACTIONS ---------- */
+    /* ----------- ACTIONS ----------- */
     @IBAction func onCameraOptions(sender: AnyObject) {
         // Pick from Camera
         let vc = UIImagePickerController()
@@ -42,7 +44,7 @@ class PhotoPickerViewController: UIViewController, UIImagePickerControllerDelega
         self.presentViewController(vc, animated: true, completion: nil)
     }
     
-    /* ---------- UIIMAGEPICKERCONTROLLER DELEGATE FUNCTIONS ---------- */
+    /* ----------- UIIMAGEPICKERCONTROLLER DELEGATE FUNCTIONS ----------- */
     func imagePickerController(picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         // Get the image captured by the UIImagePickerController
@@ -57,9 +59,7 @@ class PhotoPickerViewController: UIViewController, UIImagePickerControllerDelega
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-    /* ---------- UINAVIGATIONCONTROLLER DELEGATE FUNCTIONS ---------- */
-    
-    /* ---------- SEGUES ---------- */
+    /* ----------- SEGUES ----------- */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "toCaptionPage") {
             let vc = segue.destinationViewController as! CaptionPageViewController

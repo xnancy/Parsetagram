@@ -10,54 +10,122 @@ import Foundation
 import Parse
 
 class Post: NSObject {
+    
+    /* ----------- VARIABLES ----------- */
     var caption: String?
     var likesCount: Int?
     var commentsCount: Int?
     var image: UIImage?
+    var comments: [Comment]?
+    var parseID: String?
     
-    // initialize post with values
+    /* ----------- INITIALIZERS ----------- */
     init(image: UIImage?, caption: String?) {
+        super.init()
+        
         self.image = image
         self.caption = caption
         self.commentsCount = 0
         self.likesCount = 0
+        self.comments = []
+        self.parseID = ""
     }
     
-    /**
-     Method to add a user post to Parse (uploading image file)
-     
-     - parameter image: Image that the user wants upload to parse
-     - parameter caption: Caption text input by the user
-     - parameter completion: Block to be executed after save operation is complete
-     */
+    init(post: PFObject?) {
+        super.init()
+        
+        self.caption = post!["caption"] as? String
+        self.likesCount = post!["likesCount"] as? Int
+        
+
+        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+        dispatch_async(queue) {
+            do {
+                let photoTemp = post!["media"] as! PFFile
+                let middleTemp = try photoTemp.getData()
+                let imageTemp = try UIImage(data: middleTemp)
+                self.image = imageTemp
+            } catch {
+                print("Something went wrong!")
+            }
+        }
+        
+        self.commentsCount = post!["commentsCount"] as? Int
+        self.comments = []
+        if post!["comments"] != nil {
+            for commentDict in post!["comments"] as! NSArray {
+                let temp = commentDict as! NSDictionary
+                let comment = Comment.init(text: temp["text"] as! String, author: temp["author"] as! String)
+                comments?.append(comment)
+            }
+        }
+        self.parseID = post!["parseID"] as? String
+    }
+    
+    /* ----------- FUNCTIONS ----------- */
+    func addComment(text: String, author: String) {
+        let newComment = Comment.init(text: text, author: author)
+        comments?.append(newComment)
+        updateServer()
+    }
+    
     func postToServer() {
+        print("CALLED")
         // Create Parse object PFObject
         let post = PFObject(className: "Post")
         
-        // Add relevant fields to the object
-        post["media"] = getPFFileFromImage(image) // PFFile column type
-        post["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
-        post["caption"] = caption
-        post["likesCount"] = 0
-        post["commentsCount"] = 0
-        
+        addElementsToPost(post)
         // Save object (following function will save the object in Parse asynchronously)
+        print("POSTING")
         post.saveInBackgroundWithBlock {(success: Bool, error: NSError?) -> Void in
             if (success) {
-                // The object has been saved.
+                print("POSTED")
+                self.parseID = post.objectId
+                self.updateServer()
             } else {
                 // There was a problem, check error.description
             }
         }
     }
 
-    /**
-     Method to convert UIImage to PFFile
- 
-     - parameter image: Image that the user wants to upload to parse
- 
-     - returns: PFFile for the the data in the image
-     */
+    func updateServer() {
+        var query = PFQuery(className:"Post")
+        print("current parse id: \(parseID)")
+        query.getObjectInBackgroundWithId(parseID!) {
+            (post: PFObject?, error: NSError?) -> Void in
+            if error != nil {
+                print(error)
+            } else if let post = post {
+                self.addElementsToPost(post)
+                // Save object (following function will save the object in Parse asynchronously)
+                post.saveInBackgroundWithBlock {(success: Bool, error: NSError?) -> Void in
+                    if (success) {
+                        self.parseID = post.objectId
+                    } else {
+                        // There was a problem, check error.description
+                    }
+                }
+            }
+        }
+    }
+    
+    func addElementsToPost(post: PFObject) {
+        post["media"] = getPFFileFromImage(image) // PFFile column type
+        post["author"] = PFUser.currentUser() // Pointer column type that points to PFUser
+        post["caption"] = caption
+        post["likesCount"] = likesCount
+        post["commentsCount"] = commentsCount
+        var commentsArray:[NSDictionary] = []
+        for comment in comments! {
+            let commentsDict: NSDictionary = [:]
+            commentsDict.setValue(comment.text, forKey: "text")
+            commentsDict.setValue(comment.author, forKey: "author")
+            commentsArray.append(commentsDict)
+        }
+        post["comments"] = commentsArray
+        post["parseID"] = parseID
+    }
+    
     func getPFFileFromImage(image: UIImage?) -> PFFile? {
         // check if image is not nil
         if let image = image {

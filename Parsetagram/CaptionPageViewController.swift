@@ -51,16 +51,9 @@ class CaptionPageViewController: UIViewController, UITextViewDelegate {
     @IBAction func onShare(sender: AnyObject) {
         // Create post
         let newPost = Post.init(image: rawUIImage, caption: captionTextView.text)
+        print("reacheda")
         newPost.postToServer()
-       
+        print("reached b")
         self.navigationController?.popViewControllerAnimated(true)
-    }
-    
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
 }
