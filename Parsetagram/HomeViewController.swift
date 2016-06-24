@@ -80,14 +80,12 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("imageCell", forIndexPath: indexPath) as! imageTableCell
         print("size in cell: \(allPosts?.count)")
-        cell.photoView.image = allPosts![indexPath.row].image
-        cell.photoView2.image = allPosts![indexPath.row].image
-        cell.captionText.text = allPosts![indexPath.row].caption
+        cell.photoView.image = allPosts![indexPath.section].image
+        cell.photoView2.image = allPosts![indexPath.section].image
+        cell.captionText.text = allPosts![indexPath.section].caption
         cell.delegate = self
         cell.postToShowIndex = indexPath.row
         cell.dateLabel.text = allPosts![indexPath.row].timeStamp
-        cell.authorLabel.text = allPosts![indexPath.row].username
-        print("author: \(cell.authorLabel.text)")
         return cell
     }
     

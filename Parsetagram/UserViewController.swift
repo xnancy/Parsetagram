@@ -15,7 +15,6 @@ class UserViewController: HomeViewController {
     override func loadData() {
         let query = PFQuery(className: "Post")
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
-        print("asdfsdf")
         query.limit = 20
         if allPosts == nil {
             allPosts = []

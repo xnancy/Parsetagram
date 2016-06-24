@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
             usernameField.text = PFUser.currentUser()?.username
-        passwordField.text = "Hidden"
+        passwordField.text = PFUser.currentUser()?.password
         profileImage.layer.borderWidth = 1
         profileImage.layer.masksToBounds = false
         profileImage.layer.borderColor = UIColor.blackColor().CGColor
