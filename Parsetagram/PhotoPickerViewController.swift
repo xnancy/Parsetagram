@@ -10,12 +10,23 @@ import UIKit
 
 class PhotoPickerViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var settingsButton: UIImageView!
+    @IBOutlet weak var cameraButton: UIImageView!
     /* ----------- VARIABLES ----------- */
     var imageToPost: UIImage?
     
     /* ----------- VIEW CONTROLLER ----------- */
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        settingsButton.image = settingsButton.image?.maskWithColor(UIColor(hue: 0.6167, saturation: 1, brightness: 1, alpha: 1.0) /* #004cff */
+)
+        cameraButton.image = cameraButton.image?.maskWithColor(UIColor(hue: 0.6167, saturation: 1, brightness: 1, alpha: 1.0) /* #004cff */
+)
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "banner4"), forBarMetrics: .Default)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor(hue: 0.6167, saturation: 1, brightness: 1, alpha: 1.0) /* #004cff */
+]
+        self.navigationController!.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
     }
 
     override func didReceiveMemoryWarning() {

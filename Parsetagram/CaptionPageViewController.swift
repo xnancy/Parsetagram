@@ -22,8 +22,14 @@ class CaptionPageViewController: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "banner4"), forBarMetrics: .Default)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor(hue: 0.6167, saturation: 1, brightness: 1, alpha: 1.0) /* #004cff */
+]
+        self.navigationController!.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        self.tabBarController!.tabBar.backgroundImage = UIImage(named: "banner4rotate")
+        
         popUpView.hidden = true
-        // load raw UIImage to view 
+        // load raw UIImage to view
         pictureImageView.image = rawUIImage
         captionTextView.delegate = self
     }

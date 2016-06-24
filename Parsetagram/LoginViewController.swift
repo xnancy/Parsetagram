@@ -15,9 +15,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet weak var titleLabel: UILabel!
     /* ----------- VIEW CONTROLLER ----------- */
     override func viewDidLoad() {
         super.viewDidLoad()
+        titleLabel.textColor =  UIColor(hue: 0.6167, saturation: 1, brightness: 1, alpha: 1.0)
 
         // Do any additional setup after loading the view.
     }

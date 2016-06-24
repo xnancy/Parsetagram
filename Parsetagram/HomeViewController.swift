@@ -21,10 +21,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     /* ----- VARIABLES ----- */
     var allPosts: [Post]?
     var postToShowIndex: Int?
+    let CellIdentifier = "TableViewCell", HeaderViewIdentifier = "TableViewHeaderView"
     
     /* ----------- VIEW CONTROLLER ---------- */
     override func viewDidLoad() {
         super.viewDidLoad()
+        imageTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: CellIdentifier)
+        imageTable.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: HeaderViewIdentifier)
+        
+        self.navigationController!.navigationBar.setBackgroundImage(UIImage(named: "banner4")?.alpha(0.8), forBarMetrics: .Default)
+        let titleDict: NSDictionary = [NSForegroundColorAttributeName: UIColor(hue: 0.6167, saturation: 1, brightness: 1, alpha: 1.0) /* #004cff */
+]
+        self.navigationController!.navigationBar.titleTextAttributes = titleDict as? [String : AnyObject]
+        self.tabBarController!.tabBar.backgroundImage = UIImage(named: "banner4rotate")?.alpha(0.8)
+        self.tabBarController!.tabBar.autoresizesSubviews = true
+        self.tabBarController!.tabBar.clipsToBounds = true
         
         // Initialize a UIRefreshControl
         let refreshControl = UIRefreshControl()
@@ -67,9 +78,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /* ---------- TABLE VIEW DATA SOURCE ---------- */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let dateFormatter: NSDateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "HH:mm:ss"
-        let cell = tableView.dequeueReusableCellWithIdentifier("imageCell") as! imageTableCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("imageCell", forIndexPath: indexPath) as! imageTableCell
+        print("size in cell: \(allPosts?.count)")
         cell.photoView.image = allPosts![indexPath.row].image
         cell.photoView2.image = allPosts![indexPath.row].image
         cell.captionText.text = allPosts![indexPath.row].caption
@@ -81,10 +91,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("N N \((allPosts?.count)!)")
-        return (allPosts?.count)!
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableHeaderFooterViewWithIdentifier(HeaderViewIdentifier)! as UITableViewHeaderFooterView
+        print("size in header: \(allPosts?.count)")
+        print("section is \(section)")
+        //TODO HERE
+        if allPosts!.count > section {
+            header.textLabel!.text = allPosts![section].username
+        }
+        return header
     }
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return allPosts!.count
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
     /* ----------- HELPER FUNCTIONS ----------- */
     func loadData() {
         let query = PFQuery(className: "Post")

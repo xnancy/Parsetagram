@@ -31,7 +31,7 @@ class Post: NSObject {
         self.comments = []
         self.parseID = ""
         self.username = PFUser.currentUser()?.username
-        dateFormatter.dateFormat = "HH:mm:ss"
+        dateFormatter.dateFormat = "MM/dd/yy HH:mm"
         self.timeStamp = dateFormatter.stringFromDate(NSDate())
     }
     

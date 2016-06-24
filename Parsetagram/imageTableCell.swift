@@ -26,7 +26,6 @@ class imageTableCell: UITableViewCell {
     
     /* ----- ACTIONS ----- */
     @IBAction func onImageButton(sender: AnyObject) {
-        
         delegate?.presentPhotoViewController(postToShowIndex!)
     }
 }
