@@ -18,17 +18,21 @@ class Post: NSObject {
     var image: UIImage?
     var comments: [Comment]?
     var parseID: String?
+    var timeStamp: String?
+    var username: String?
+    let dateFormatter: NSDateFormatter = NSDateFormatter()
     
     /* ----------- INITIALIZERS ----------- */
     init(image: UIImage?, caption: String?) {
-        super.init()
-        
         self.image = image
         self.caption = caption
         self.commentsCount = 0
         self.likesCount = 0
         self.comments = []
         self.parseID = ""
+        self.username = PFUser.currentUser()?.username
+        dateFormatter.dateFormat = "HH:mm:ss"
+        self.timeStamp = dateFormatter.stringFromDate(NSDate())
     }
     
     init(post: PFObject?) {
@@ -60,11 +64,14 @@ class Post: NSObject {
             }
         }
         self.parseID = post!["parseID"] as? String
+        self.timeStamp = post!["date"] as? String
+        self.username = post!["username"] as? String
     }
     
     /* ----------- FUNCTIONS ----------- */
     func addComment(text: String, author: String) {
         let newComment = Comment.init(text: text, author: author)
+        print("Initiated comment with text \(newComment.text)")
         comments?.append(newComment)
         updateServer()
     }
@@ -117,6 +124,7 @@ class Post: NSObject {
         post["commentsCount"] = commentsCount
         var commentsArray:[NSDictionary] = []
         for comment in comments! {
+            print("Comment posted")
             let commentsDict: NSDictionary = [:]
             commentsDict.setValue(comment.text, forKey: "text")
             commentsDict.setValue(comment.author, forKey: "author")
@@ -124,6 +132,8 @@ class Post: NSObject {
         }
         post["comments"] = commentsArray
         post["parseID"] = parseID
+        post["date"] = timeStamp
+        post["username"] = username
     }
     
     func getPFFileFromImage(image: UIImage?) -> PFFile? {

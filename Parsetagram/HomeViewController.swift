@@ -67,11 +67,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     /* ---------- TABLE VIEW DATA SOURCE ---------- */
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let dateFormatter: NSDateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "HH:mm:ss"
         let cell = tableView.dequeueReusableCellWithIdentifier("imageCell") as! imageTableCell
         cell.photoView.image = allPosts![indexPath.row].image
+        cell.photoView2.image = allPosts![indexPath.row].image
         cell.captionText.text = allPosts![indexPath.row].caption
         cell.delegate = self
         cell.postToShowIndex = indexPath.row
+        cell.dateLabel.text = allPosts![indexPath.row].timeStamp
+        cell.authorLabel.text = allPosts![indexPath.row].username
+        print("author: \(cell.authorLabel.text)")
         return cell
     }
     
@@ -146,7 +152,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func photoPagesController(controller: EBPhotoPagesController!, didPostComment commentText: String!, forPhotoAtIndex index: Int) {
-        allPosts![index].addComment(commentText, author: "author")
+        allPosts![index].addComment(commentText, author: (PFUser.currentUser()?.username)!)
     }
-
 }

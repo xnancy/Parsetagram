@@ -19,6 +19,10 @@ class imageTableCell: UITableViewCell {
     /* ----- OUTLETS ----- */
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var captionText: UILabel!
+    @IBOutlet weak var photoView2: UIImageView!
+    
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var authorLabel: UILabel!
     
     /* ----- ACTIONS ----- */
     @IBAction func onImageButton(sender: AnyObject) {

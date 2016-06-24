@@ -18,9 +18,11 @@ class CaptionPageViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet weak var captionTextView: UITextView!
     
+    @IBOutlet weak var popUpView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        popUpView.hidden = true
         // load raw UIImage to view 
         pictureImageView.image = rawUIImage
         captionTextView.delegate = self
@@ -47,13 +49,24 @@ class CaptionPageViewController: UIViewController, UITextViewDelegate {
     }
     
     /* ---------- BUTTONS ---------- */
-    
     @IBAction func onShare(sender: AnyObject) {
         // Create post
         let newPost = Post.init(image: rawUIImage, caption: captionTextView.text)
-        print("reacheda")
         newPost.postToServer()
-        print("reached b")
+        
+        // Show confirmation 
+        popUpView.hidden = false
+        popUpView.alpha = 1.0
+        pictureImageView.alpha = 0
+        captionTextView.alpha = 0
+        let timer = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(CaptionPageViewController.update), userInfo: nil, repeats: false)
+    }
+    
+    func update() {
+        popUpView.hidden = true
+        UIView.animateWithDuration(1.0, delay: 0.0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+            self.popUpView.alpha = 0.0
+            }, completion: nil)
         self.navigationController?.popViewControllerAnimated(true)
     }
 }
