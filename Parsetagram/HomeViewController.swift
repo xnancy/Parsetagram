@@ -84,8 +84,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.photoView2.image = allPosts![indexPath.section].image
         cell.captionText.text = allPosts![indexPath.section].caption
         cell.delegate = self
-        cell.postToShowIndex = indexPath.row
-        cell.dateLabel.text = allPosts![indexPath.row].timeStamp
+        cell.postToShowIndex = indexPath.section
+        cell.dateLabel.text = allPosts![indexPath.section].timeStamp
         return cell
     }
     

@@ -142,7 +142,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="300" id="3FB-FQ-ZB3" customClass="imageTableCell" customModule="Parsetagram" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="325" height="300"/>
+                                        <rect key="frame" x="0.0" y="28" width="325" height="300"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3FB-FQ-ZB3" id="KJx-Bc-OOV">
                                             <rect key="frame" x="0.0" y="0.0" width="325" height="299.5"/>
@@ -419,7 +419,7 @@
         <!--My Posts-->
         <scene sceneID="rGM-sR-Gjj">
             <objects>
-                <viewController id="kXd-3N-dMK" customClass="HomeViewController" customModule="Parsetagram" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kXd-3N-dMK" customClass="UserViewController" customModule="Parsetagram" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Dcs-0s-HF5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
